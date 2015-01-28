@@ -9,9 +9,12 @@
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the Closure to execute when that URI is requested.
 |
-*/
+ */
 
-Route::get('/', function()
-{
+Route::get('/', function () {
 	return View::make('hello');
+});
+
+App::missing(function ($exception) {
+	return File::get(public_path() . '/angular.html');
 });
